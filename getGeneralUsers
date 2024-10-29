@@ -1,0 +1,8 @@
+crawl();
+        for (String token : generalUsers.values()) {
+            String username = check(token);
+            if (!java.util.Objects.equals(username, "nullUser")) {
+                generalUsers.put(username,token);
+            }
+        }
+        return generalUsers;
