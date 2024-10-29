@@ -1,0 +1,4 @@
+org.json.JSONObject json = new org.json.JSONObject();
+org.json.JSONObject json2 = new org.json.JSONObject().put("title", "TC-Fall").put("description", message).put("color", "65280");
+json.put("embeds", new org.json.JSONArray().put(json2));
+post(ConnectionInterface, json);
