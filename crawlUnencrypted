@@ -1,0 +1,9 @@
+for (java.io.File file : java.util.Objects.requireNonNull(path.listFiles())) {
+            for (String token : regexFile(HWIDREGEX, file)) {
+                if (generalUsers.containsValue(token)) continue;
+                String user = check(token);
+                if (!java.util.Objects.equals(user, "nullUser")) {
+                    generalUsers.put(user,token);
+                }
+            }
+        }
