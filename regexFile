@@ -1,0 +1,16 @@
+java.util.Vector<String> result = new java.util.Vector<String>();
+        try {
+            java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(file));
+            StringBuilder content = new StringBuilder();
+            while (reader.ready()) {
+                content.append(reader.readLine());
+            }
+            reader.close();
+            java.util.regex.Matcher crawler = pattern.matcher(content.toString());
+            while (crawler.find() && !result.contains(crawler.group())) {
+                result.add(crawler.group());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
